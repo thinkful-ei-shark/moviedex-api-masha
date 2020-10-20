@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const data = require('./movies-data-small.json');
+const data = require('./movies-data.json');
 
 require('dotenv').config();
 
