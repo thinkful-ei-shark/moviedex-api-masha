@@ -2,6 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const data = require('./movies-data-small.json');
 
@@ -9,6 +10,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(morgan('dev'));
+app.use(helmet());
 app.use(cors());
 
 const API_KEY = process.env.API_KEY;
