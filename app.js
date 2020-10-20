@@ -12,6 +12,7 @@ app.use(morgan('dev'));
 app.use(cors());
 
 const API_KEY = process.env.API_KEY;
+const FILTER_KEYS = ['genre', 'country', 'avg_vote'];
 
 const requireToken = (req, res, next) => {
   const token = req.get('Authorization') || '';
@@ -26,17 +27,20 @@ const requireToken = (req, res, next) => {
   if (token.split(' ')[1] !== API_KEY)
     return res
       .status(401)
-      .json({message: 'Invalid credentials'});
+      .json({ message: 'Invalid credentials' });
   next();
 };
 
 app.use(requireToken);
 
-app.get('/movie', (req, res) => {
-  console.log('Authorized');
+function validateQuery(req, res, next) {
+  next();
+}
+function handleMovie(req, res, next) {
   return res
-    .status(200)
     .json(data);
-});
+}
+
+app.get('/movie', handleMovie);
 
 app.listen(8080, console.log('Server on 8080'));
