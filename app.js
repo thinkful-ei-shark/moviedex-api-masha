@@ -21,9 +21,9 @@ const FILTERS = {
   country: (list, string) => 
     list.filter(item => 
       item.country.toLowerCase().includes(string.toLowerCase())),
-  avg_vote: (list, int) =>
+  avg_vote: (list, num) =>
     list.filter(item => 
-      item.avg_vote >= int)
+      item.avg_vote >= num)
 };
 
 const requireToken = (req, res, next) => {
