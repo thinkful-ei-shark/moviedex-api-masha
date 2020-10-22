@@ -79,4 +79,4 @@ function handleMovie(req, res, next) {
 
 app.get('/movie', validateQuery, handleMovie);
 
-app.listen(8080, console.log('Server on 8080'));
+app.listen(8080, () => console.log('Server on 8080'));
